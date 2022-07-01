@@ -1,0 +1,61 @@
+def decimalPraBinario(A):
+    #Range que divide o número por 2, até ele chegar em 1, depois damos um break. Mas o range também mostra se a divisão dá 0 ou 1 em cada divisão por 2, usando o %. Assim nós colocamos eles em uma lista a cada divisão.
+    Lista = []
+    for i in range(A):
+        Valor2 = str(A%2)
+        A = A//2
+        Lista.append(Valor2)
+        if A == 1:
+            #Temos que adicionar mais um 1, pois esse valor não é dividido e quando chega nele, o programa já sai do range.
+            Lista.append("1")
+            break
+
+#Depois colocamos a lista ao contrário e usamos o join para transformar a lista em string.
+    Nova_Lista = list(reversed(Lista))
+    B = ''.join(Nova_Lista)
+    print(B)
+
+def Matriz(A,B):
+    
+    #Primeiro nós descobrimo a quantidade de linha e colunas das duas listas adicionadas usando o len.
+    
+    Resultado = []
+    linhaA = len(A)
+    colunaA = len(A[0])
+    linhaB = len(B)
+    colunaB = len(B[0])
+    
+# Se obedecerem a regra de ordem, então entram, sendo a quantidade de linhas e colunas iguais.
+#Depois nós transformamos uma lista acessível a reber elementos e ser uma matriz, colocando a quantidade de coluna que as duas que vão somar tem. Usando dois range, um para linhas e outro para colunas.
+    
+    if linhaA == linhaB and colunaA == colunaB:
+        for i in range(linhaA):
+            L = [0]*colunaA
+            Resultado.append(L)
+            for j in range(colunaA): #Usamos o range para adicionas os elementos já somados na outra lista.
+                Resultado[i][j] = A[i][j] + B[i][j]  
+            
+# Se as duas matrizes não tiverem a mesma ordem, então não pode fazer a soma.
+    else:
+        print("Erro, pois o número de ordem é diferente!")
+
+#Printamos o resultado.
+    print(Resultado)
+
+#Exemplos:
+
+C = 230
+decimalPraBinario(C)
+
+D = 12340
+decimalPraBinario(D)
+
+E = [[1,2],[3,4],[5,6]]
+F = [[6,1],[5,2],[4,3]]
+  
+Matriz(E,F)
+
+G = [[32,-4],[7,8],[8,-6]]
+H = [[-22,43],[4,-1],[32,-5]]
+
+Matriz(G,H)
