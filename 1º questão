@@ -1,0 +1,36 @@
+#Primeiramente, nós recebemos a quantidade de nomes que vamos receber, depois usamos isso para definir a quantidade de vezes que o range vai rodar com while. O while só vai dá break, quando o nome tiver apenas um espaço, pois é o que separa o nome do sobrenome. Pois, se não, vai aparecer uma mensagem de erro; colocamos esses nomes já em um split que separa o nome e o sobrenome pelo espaço, fazendo com que um vá para a lista dos nomes e outro para lista dos sobrenomes.
+
+print("Coloque a quantidade de nomes que você quer.")
+N = int(input("N: "))
+Lista = []
+Nome_list = []
+Sobrenome_list = []
+for i in range(N):
+    while True:
+        Nome = input("Escreva um nome composto: ")
+        if Nome.count(" ") > 1:
+            print("Erro! Só aceitamos o 1º e o 2º nome.")
+        elif Nome.count(" ") == 1:
+            Lista1 = Nome.split(" ")
+            Nome_list.append(Lista1[0])
+            Sobrenome_list.append(Lista1[1])
+            Lista.append(Nome)
+            break
+        else:
+            print("Erro! Só aceitamos o 1º junto com o 2º nome.")
+
+Resultado = []
+#Colocamos as duas listas em ordem crescente
+Nome_list = sorted(Nome_list)
+Sobrenome_list = sorted(Sobrenome_list)
+
+#Depois pegamos os valores da lista_nome e da lista_sobrenome, que estão recebendo seu indice a partir do i em range e juntamos eles, pois vão ser os mais próximos.
+for i in range(len(Nome_list)):
+    A = Nome_list[i]
+    B = Sobrenome_list[i]
+    Valor = f"{A} {B}"
+    Resultado.append(Valor)
+
+#Printamos os valores.
+for j in Resultado:
+    print(j)
